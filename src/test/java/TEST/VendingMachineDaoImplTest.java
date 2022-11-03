@@ -40,12 +40,13 @@ public VendingMachineDaoImplTest() {
     }
 //Methods for texting
     @Test
-   public void testAddProduct() throws Exception, VendingMachinePersistenceException {
+   public void testAddProduct() {
     //create method test input
-        String ProductID="1";
-        Product product = new Product(ProductID);
-        product.setProductName("snickers bar");
+        System.out.println("AddProduct");
         BigDecimal cost =new BigDecimal(1.00);
+        String ProductID="1";
+        Product product = new Product(ProductID,"snickers bar",cost,2);
+        product.setProductName("snickers bar");
         product.setPrice(cost);
         product.setproductsInStock(2);
         //Add the Product to the DAO
@@ -60,18 +61,18 @@ public VendingMachineDaoImplTest() {
     }
 
     @Test
-    void testAddGetAllProduct() throws VendingMachinePersistenceException {
+    void testAddGetAllProduct() {
     //create our first product
-        Product firstProduct = new Product("1");
+        System.out.println("AddGetAllProduct");
         BigDecimal cost=new BigDecimal("1.00");
+        Product firstProduct = new Product("1","Snickers bar",cost,2);
         firstProduct.setProductName("Snickers bar");
         firstProduct.setPrice(cost);
         firstProduct.setproductsInStock(2);
 
         //now we have to create our second item
-
-        Product secondProduct = new Product("2");
         BigDecimal price= new BigDecimal("1.99");
+        Product secondProduct = new Product("2","CocaCola",price,8);
         secondProduct.setProductName("CocaCola");
         secondProduct.setPrice(price);
         secondProduct.setproductsInStock(8);
@@ -93,18 +94,18 @@ public VendingMachineDaoImplTest() {
 
     }
     @Test
-    public void testRemoveProduct() throws VendingMachinePersistenceException {
+    void testRemoveProduct(){
     //Create 2 new products
-        Product firstProduct = new Product("1");
-        BigDecimal cost=new BigDecimal("1.00");
+        System.out.println("removeProduct");
+        BigDecimal cost = new BigDecimal("1.00");
+        Product firstProduct = new Product("1","Snickers bar",cost,2);
         firstProduct.setProductName("Snickers bar");
         firstProduct.setPrice(cost);
         firstProduct.setproductsInStock(2);
 
         //now we have to create our second item
-
-        Product secondProduct = new Product("2");
         BigDecimal price= new BigDecimal("1.99");
+        Product secondProduct = new Product("2","CocaCola",price,8);
         secondProduct.setProductName("CocaCola");
         secondProduct.setPrice(price);
         secondProduct.setproductsInStock(8);

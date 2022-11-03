@@ -8,23 +8,26 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 public class VendingMachineAuditDaoImpl implements VendingMachineAuditDao {
-    public static final String Audit_File="audit.txt";
+    public static final String Audit_File = "audit.txt";
 
 
     @Override
     public void writeAuditInfo(String info) throws VendingMachinePersistenceException {
         PrintWriter out;
-        try{
-            out= new PrintWriter(new FileWriter(Audit_File,true));
+        try {
+            out = new PrintWriter(new FileWriter(Audit_File, true));
 
         } catch (IOException e) {
-            throw new VendingMachinePersistenceException ("Could not put in audit information",e);
+            throw new VendingMachinePersistenceException("Could not put in audit information", e);
         }
-        LocalDateTime timestamp =LocalDateTime.now();
-        out.println(timestamp.toString()+ "::" + info);
+        LocalDateTime timestamp = LocalDateTime.now();
+        out.println(timestamp.toString() + "::" + info);
         out.flush();
         out.close();
     }
+}
 
 
-    }
+
+
+

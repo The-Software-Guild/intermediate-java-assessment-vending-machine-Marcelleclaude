@@ -82,7 +82,7 @@ public class VendingMachineServiceImpl implements VendingMachineServiceLayer{
         } else {
             throw new NoItemInventoryException(" Selected Item is not in stock");
         }
-        System.out.println("This is the product we are subtracting from: "+prod.toString());
+       // System.out.println("This is the product we are subtracting from: "+prod.toString());
         dao.updateProducts(prod.getProductId(), prod);
         auditdao.writeAuditInfo("Item: " + prod.getProductName() + " is updated. Inventory is " + prod.getproductsInStock());
 

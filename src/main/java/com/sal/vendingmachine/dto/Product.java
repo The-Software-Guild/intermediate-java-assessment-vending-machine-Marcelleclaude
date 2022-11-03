@@ -81,7 +81,7 @@ public class Product {
         hash = 79 * hash + Objects.hashCode(this.productId);
         hash = 79 * hash + Objects.hashCode(this.productName);
         hash = 79 * hash + Objects.hashCode(this.price);
-        hash = 79 * hash + this.productsInStock;
+        hash = 79 * hash + Objects.hashCode(this.itemsInStock);
         return hash;
     }
 
@@ -93,14 +93,17 @@ public class Product {
         if (obj == null) {
             return false;
         }
+        if (getClass() !=obj.getClass()){
+            return false;
+        }
         final Product other = (Product) obj;
         if (this.itemsInStock != other.itemsInStock) {
             return false;
         }
-        if (!Objects.equals(this.productId, productId)) {
+        if (!Objects.equals(this.productId, other.productId)) {
             return false;
         }
-        if (!Objects.equals(this.productName, productName)) {
+        if (!Objects.equals(this.productName, other.productName)) {
             return false;
         }
         return true;

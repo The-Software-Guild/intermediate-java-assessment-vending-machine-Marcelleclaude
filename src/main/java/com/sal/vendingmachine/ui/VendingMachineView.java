@@ -76,11 +76,11 @@ public class VendingMachineView {
             return false;
         }
     }
-    public void displayFinalMessage(){
-        io.print("Thank you! Come back again");
-    }
     public void displayUserResponse(){
         io.print("Do you want to make another selection?");
+    }
+    public void displayFinalMessage(){
+        io.print("Thank you! Come back again");
     }
 
     public void displayProduct(Product p) {

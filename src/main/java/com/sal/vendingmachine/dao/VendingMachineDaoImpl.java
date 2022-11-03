@@ -17,12 +17,12 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
 
     public VendingMachineDaoImpl() {
         Product_File="product1.txt";
-        System.out.println();
-        System.out.println();
-        System.out.println(Paths.get(Product_File));
+//        System.out.println();
+//        System.out.println();
+//        System.out.println(Paths.get(Product_File));
     }
  public VendingMachineDaoImpl(String ProductTextFile) {
-        Product_File="\\home\\claude\\Documents\\Repo\\intermediate-java-assessment-vending-machine-Marcelleclaude\\Vending Machine Ass. 3\\target\\classes\\product1.txt";
+        Product_File=ProductTextFile;
    }
 
     @Override
@@ -65,7 +65,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         List<Product> productList=this.getAllProduct();
         for(Product currentProduct:productList)
         {
-            System.out.println(currentProduct.toString());
+           // System.out.println(currentProduct.toString());
         }
 
         for(Product currentProduct: productList){
