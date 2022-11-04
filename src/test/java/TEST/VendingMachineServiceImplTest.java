@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class VendingMachineServiceImplTest {
     VendingMachineDao testDao = new VendingMachineDaoImpl("VendingMachineTestFile.txt");
-    String testAuditFile = "testAuditFile.txt";
+    String testAuditFile = "testProduct.txt";
     VendingMachineAuditDao testAuditDao = new VendingMachineAuditDaoImpl ();
     VendingMachineServiceLayer testService = new VendingMachineServiceImpl(testAuditDao,testDao);
 
@@ -64,16 +64,15 @@ public class VendingMachineServiceImplTest {
         //act
         try{
             testService.checkEnoughMoneyToBuyProduct(enoughMoney,product);
-            fail("There insufficient funds, exception should have been thrown");
-        }catch (InsufficientFundsException e){
 
+        }catch (InsufficientFundsException e){
+            fail("There insufficient funds, exception should have been thrown");
         }
     }
 
     @Test
     void testGetChosenProduct() throws VendingMachinePersistenceException {
         System.out.println("getChosenProduct");
-        BigDecimal bd = new BigDecimal("2.50");
         Product expectedResult = new Product("1");
         Product result = new Product("1");
         assertEquals(expectedResult,result,"check both items equals");
@@ -102,18 +101,21 @@ public class VendingMachineServiceImplTest {
     @Test
     void testCalculateChange () throws VendingMachinePersistenceException {
         System.out.println("CalculateChange");
-        //ACT
-        Product aProduct = testService.getChosenProduct(".1");
-        aProduct.setPrice(new BigDecimal("1.99"));
-        aProduct.setproductsInStock(8);
+        //ACt
+        String productId="1";
+        String productName="cake";
+        BigDecimal price =new BigDecimal("1.99");
+        int itemsInStock=8;
+
+        Product aProduct= new Product(productId, productName, price,itemsInStock);
         BigDecimal amount = new BigDecimal("2.90");
         Change result = testService.calculateChange(amount, aProduct);
 
         //assert
-        assertEquals(10, result.getQuarters(), "Check number of quarters");
-        assertEquals(0, result.getDimes(), "Check number of dimes");
-        assertEquals(0, result.getNickels(), "Check number of nickels");
-        assertEquals(0, result.getPennies(), "Check number of pennies");
+        assertEquals(3, result.getQuarters(), "Check number of quarters");
+        assertEquals(1, result.getDimes(), "Check number of dimes");
+        assertEquals(1, result.getNickels(), "Check number of nickels");
+        assertEquals(1, result.getPennies(), "Check number of pennies");
 
     }
     @Test

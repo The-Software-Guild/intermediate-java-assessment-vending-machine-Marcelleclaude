@@ -23,6 +23,7 @@ public class Change {
         this.dimes = amount.divide(new BigDecimal(".10")).intValue();
         amount = amount.remainder(new BigDecimal(".10"));
         this.nickels = amount.divide(new BigDecimal(".05")).intValue();
+        amount = amount.remainder(new BigDecimal(".05"));
         this.pennies = amount.divide(new BigDecimal(".01")).intValue();
     }
 
